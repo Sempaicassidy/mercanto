@@ -18,10 +18,14 @@ Route::get('/manager/dashboard', function () {
     return view('manager.dashboard');
 });
 
-Route::get('/manager/statistics', function () {
-    return view('manager.statistics');
+Route::get('/manager/analytics', function () {
+    return view('manager.analytics');
 });
 
-Route::get('/statistics', function () {
-    return view('manager.statistics');
+Route::get('/analytics', function () {
+    return view('manager.analytics');
+});
+
+Route::get('/manager/statistics', function () {
+    return redirect('/manager/analytics');
 });

@@ -448,7 +448,15 @@
             font-weight: 500;
             color: var(--text-muted);
             cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.15s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-dark);
         }
 
         .tab-btn.active {
@@ -617,10 +625,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/manager/statistics') }}" class="nav-item-link">
+                        <a href="{{ url('/manager/analytics') }}" class="nav-item-link">
                             <span class="nav-item-left">
-                                <i class="bi bi-bar-chart-line"></i>
-                                <span>Statistics</span>
+                                <i class="bi bi-graph-up-arrow"></i>
+                                <span>Analytics</span>
                             </span>
                         </a>
                     </li>
@@ -787,9 +795,9 @@
 
         <!-- Tab Controls -->
         <div class="dashboard-tabs">
-            <button class="tab-btn active">Overview</button>
-            <button class="tab-btn">Analytics</button>
-            
+            <a href="{{ url('/manager/dashboard') }}" class="tab-btn active">Overview</a>
+            <a href="{{ url('/manager/analytics') }}" class="tab-btn">Analytics</a>
+            <button class="tab-btn">Reports</button>
             <button class="tab-btn">Notifications</button>
         </div>
 

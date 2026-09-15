@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistics - e-duka</title>
+    <title>Analytics - e-duka</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -383,6 +383,78 @@
             background-color: #e2e8f0;
         }
 
+        /* Top Header */
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .dashboard-title {
+            font-size: 1.95rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
+        }
+
+        .btn-download {
+            background-color: var(--primary-btn);
+            color: #ffffff;
+            border: none;
+            padding: 0.55rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background-color: #27272a;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* Nav Tabs Switcher */
+        .dashboard-tabs {
+            display: inline-flex;
+            background-color: #f4f4f5;
+            padding: 4px;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            gap: 2px;
+        }
+
+        .tab-btn {
+            border: none;
+            background: transparent;
+            padding: 0.4rem 1.1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-dark);
+        }
+
+        .tab-btn.active {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
         /* Statistics UI Components matching image */
         .stat-card-custom {
             background-color: #ffffff;
@@ -565,11 +637,11 @@
                         </a>
                     </li>
                     <li>
-                        <!-- Statistics Nav Item (Active) -->
-                        <a href="{{ url('/manager/statistics') }}" class="nav-item-link active">
+                        <!-- Analytics Nav Item (Active) -->
+                        <a href="{{ url('/manager/analytics') }}" class="nav-item-link active">
                             <span class="nav-item-left">
-                                <i class="bi bi-bar-chart-line"></i>
-                                <span>Statistics</span>
+                                <i class="bi bi-graph-up-arrow"></i>
+                                <span>Analytics</span>
                             </span>
                         </a>
                     </li>
@@ -720,6 +792,23 @@
                 </div>
             </div>
         </header>
+
+        <!-- Top Header Title & Actions -->
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Analytics</h1>
+            <button class="btn-download">
+                <i class="bi bi-download"></i>
+                Download
+            </button>
+        </div>
+
+        <!-- Tab Controls -->
+        <div class="dashboard-tabs">
+            <a href="{{ url('/manager/dashboard') }}" class="tab-btn">Overview</a>
+            <a href="{{ url('/manager/analytics') }}" class="tab-btn active">Analytics</a>
+            <button class="tab-btn">Reports</button>
+            <button class="tab-btn">Notifications</button>
+        </div>
 
         <!-- TOP SECTION: Traffic Overview (Weekly clicks & unique visitors) Area Chart -->
         <div class="chart-card-large">
