@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manager Dashboard - e-duka</title>
+    <title>e-Duka</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -231,8 +231,116 @@
         .main-wrapper {
             margin-left: 260px;
             flex: 1;
-            padding: 2rem 2.5rem;
+            padding: 1.25rem 2.5rem 2.5rem 2.5rem;
             min-height: 100vh;
+        }
+
+        /* Top Navigation Header Bar */
+        .top-nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .top-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Search Box matching screenshot */
+        .header-search-box {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.35rem 0.75rem;
+            width: 250px;
+            height: 38px;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+        }
+
+        .header-search-box:focus-within {
+            border-color: #09090b;
+            box-shadow: 0 0 0 1px #09090b;
+        }
+
+        .search-icon {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-right: 8px;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 0.88rem;
+            color: #1e293b;
+            width: 100%;
+        }
+
+        .search-input::placeholder {
+            color: #64748b;
+        }
+
+        .search-kbd {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: #64748b;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 2px 6px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        /* Nav Icon Action Buttons (Theme, Settings) */
+        .nav-icon-btn {
+            background: transparent;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e293b;
+            font-size: 1.15rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .nav-icon-btn:hover {
+            background-color: #f4f4f5;
+            color: #09090b;
+        }
+
+        /* Avatar Initials Circle */
+        .header-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #f1f5f9;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            user-select: none;
+        }
+
+        .header-avatar:hover {
+            background-color: #e2e8f0;
         }
 
         /* Top Header */
@@ -439,8 +547,8 @@
                         <i class="bi bi-grid-fill"></i>
                     </div>
                     <div class="workspace-info">
-                        <h4>e-duka Admin</h4>
-                        <span>Store Manager Panel</span>
+                        <h4>e-duka</h4>
+                        <span>Manager Panel</span>
                     </div>
                 </div>
                 <i class="bi bi-chevron-expand text-muted" style="font-size: 0.9rem;"></i>
@@ -461,30 +569,32 @@
                     <li>
                         <a href="#" class="nav-item-link">
                             <span class="nav-item-left">
-                                <i class="bi bi-check2-square"></i>
-                                <span>Tasks</span>
+                                <i class="bi bi-box"></i>
+                                <span>Manage Store</span>
                             </span>
+                            <i class="bi bi-chevron-right text-muted" style="font-size: 0.75rem;"></i>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-item-link">
                             <span class="nav-item-left">
-                                <i class="bi bi-box-seam"></i>
-                                <span>Apps</span>
+                                <i class="bi bi-people"></i>
+                                <span>Manage Staff</span>
                             </span>
+                            <i class="bi bi-chevron-right text-muted" style="font-size: 0.75rem;"></i>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-item-link">
                             <span class="nav-item-left">
-                                <i class="bi bi-chat-dots"></i>
-                                <span>Chats</span>
+                                <i class="bi bi-graph-up"></i>
+                                <span>Reports</span>
                             </span>
                             <span class="badge-subtle">3</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-item-link">
+                        <!-- <a href="#" class="nav-item-link">
                             <span class="nav-item-left">
                                 <i class="bi bi-people"></i>
                                 <span>Users</span>
@@ -513,7 +623,7 @@
                             <i class="bi bi-chevron-right text-muted" style="font-size: 0.75rem;"></i>
                         </a>
                     </li>
-                </ul>
+                </ul> -->
 
                 <div class="nav-section-title">Other</div>
                 <ul class="nav-list">
@@ -553,6 +663,33 @@
 
     <!-- Main Content Area -->
     <main class="main-wrapper">
+        <!-- Top Utility Header (Search, Theme, Settings, Avatar) -->
+        <header class="top-nav-bar">
+            <div class="top-nav-actions">
+                <!-- Search Box matching screenshot -->
+                <div class="header-search-box">
+                    <i class="bi bi-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search" id="global-search-input">
+                    <span class="search-kbd">⌘ K</span>
+                </div>
+
+                <!-- Theme Toggle Button (Sun icon) -->
+                <button class="nav-icon-btn" id="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme">
+                    <i class="bi bi-sun" id="theme-icon"></i>
+                </button>
+
+                <!-- Settings Button (Gear icon) -->
+                <button class="nav-icon-btn" id="settings-btn" title="Settings" aria-label="Settings">
+                    <i class="bi bi-gear"></i>
+                </button>
+
+                <!-- User Profile Initials Avatar (SN) -->
+                <div class="header-avatar" id="user-avatar-btn" title="User Profile (SN)">
+                    SN
+                </div>
+            </div>
+        </header>
+
         <!-- Top Bar Title & Actions -->
         <div class="dashboard-header">
             <h1 class="dashboard-title">Dashboard</h1>
@@ -566,7 +703,7 @@
         <div class="dashboard-tabs">
             <button class="tab-btn active">Overview</button>
             <button class="tab-btn">Analytics</button>
-            <button class="tab-btn">Reports</button>
+            
             <button class="tab-btn">Notifications</button>
         </div>
 
@@ -779,6 +916,26 @@
         $('.tab-btn').on('click', function() {
             $('.tab-btn').removeClass('active');
             $(this).addClass('active');
+        });
+
+        // Cmd+K or Ctrl+K shortcut to focus search bar
+        $(document).on('keydown', function(e) {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                $('#global-search-input').focus();
+            }
+        });
+
+        // Theme toggle button interaction
+        let isLight = true;
+        $('#theme-toggle-btn').on('click', function() {
+            isLight = !isLight;
+            const icon = $('#theme-icon');
+            if (isLight) {
+                icon.removeClass('bi-moon-stars').addClass('bi-sun');
+            } else {
+                icon.removeClass('bi-sun').addClass('bi-moon-stars');
+            }
         });
     </script>
 </body>
