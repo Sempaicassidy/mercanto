@@ -644,9 +644,8 @@
                             <i class="bi bi-chevron-right nav-chevron"></i>
                         </a>
                         <ul class="nav-submenu">
-                            <li><a href="#" class="nav-subitem-link">Cashiers List</a></li>
-                            <li><a href="#" class="nav-subitem-link">Staff Shifts</a></li>
-                            <li><a href="#" class="nav-subitem-link">Permissions</a></li>
+                            <li><a href="#" class="nav-subitem-link">Add Staff</a></li>
+                            <li><a href="#" class="nav-subitem-link">Permission</a></li>
                         </ul>
                     </li>
 
