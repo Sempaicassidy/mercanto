@@ -175,6 +175,56 @@
             border-radius: 9999px;
         }
 
+        /* Collapsible Submenu Styles (Shadcn Style) */
+        .nav-dropdown-toggle {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .nav-chevron {
+            transition: transform 0.2s ease;
+            font-size: 0.75rem;
+            color: #a1a1aa;
+        }
+
+        .nav-dropdown-toggle.open .nav-chevron,
+        .nav-dropdown-toggle[aria-expanded="true"] .nav-chevron {
+            transform: rotate(90deg);
+            color: var(--text-dark);
+        }
+
+        .nav-submenu {
+            list-style: none;
+            padding: 0.25rem 0 0.25rem 0.85rem;
+            margin: 2px 0 6px 0.85rem;
+            display: none;
+            flex-direction: column;
+            gap: 2px;
+            border-left: 1px solid #e4e4e7;
+        }
+
+        .nav-subitem-link {
+            display: block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #71717a;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+
+        .nav-subitem-link:hover {
+            color: var(--text-dark);
+            background-color: #f4f4f5;
+        }
+
+        .nav-subitem-link.active {
+            color: var(--text-dark);
+            font-weight: 600;
+            background-color: #f4f4f5;
+        }
+
         /* Sidebar Profile Bottom */
         .sidebar-profile {
             display: flex;
@@ -554,7 +604,7 @@
                 <i class="bi bi-chevron-expand text-muted" style="font-size: 0.9rem;"></i>
             </div>
 
-            <!-- DYNAMIC NAV ITEMS (Placeholder awaiting user's specific items) -->
+            <!-- DYNAMIC NAV ITEMS (Shadcn Sidebar with Interactive Dropdowns) -->
             <div id="sidebar-nav-container">
                 <div class="nav-section-title">General</div>
                 <ul class="nav-list">
@@ -566,24 +616,40 @@
                             </span>
                         </a>
                     </li>
+
+                    <!-- Dropdown: Manage Store -->
                     <li>
-                        <a href="#" class="nav-item-link">
+                        <a href="#" class="nav-item-link nav-dropdown-toggle" aria-expanded="false">
                             <span class="nav-item-left">
-                                <i class="bi bi-box"></i>
+                                <i class="bi bi-box-seam"></i>
                                 <span>Manage Store</span>
                             </span>
-                            <i class="bi bi-chevron-right text-muted" style="font-size: 0.75rem;"></i>
+                            <i class="bi bi-chevron-right nav-chevron"></i>
                         </a>
+                        <ul class="nav-submenu">
+                            <li><a href="#" class="nav-subitem-link">Products & Stock</a></li>
+                            <li><a href="#" class="nav-subitem-link">POS / Cashier</a></li>
+                            <li><a href="#" class="nav-subitem-link">Categories</a></li>
+                            <li><a href="#" class="nav-subitem-link">Suppliers</a></li>
+                        </ul>
                     </li>
+
+                    <!-- Dropdown: Manage Staff -->
                     <li>
-                        <a href="#" class="nav-item-link">
+                        <a href="#" class="nav-item-link nav-dropdown-toggle" aria-expanded="false">
                             <span class="nav-item-left">
                                 <i class="bi bi-people"></i>
                                 <span>Manage Staff</span>
                             </span>
-                            <i class="bi bi-chevron-right text-muted" style="font-size: 0.75rem;"></i>
+                            <i class="bi bi-chevron-right nav-chevron"></i>
                         </a>
+                        <ul class="nav-submenu">
+                            <li><a href="#" class="nav-subitem-link">Cashiers List</a></li>
+                            <li><a href="#" class="nav-subitem-link">Staff Shifts</a></li>
+                            <li><a href="#" class="nav-subitem-link">Permissions</a></li>
+                        </ul>
                     </li>
+
                     <li>
                         <a href="#" class="nav-item-link">
                             <span class="nav-item-left">
@@ -593,48 +659,60 @@
                             <span class="badge-subtle">3</span>
                         </a>
                     </li>
-                    <li>
-                        <!-- <a href="#" class="nav-item-link">
-                            <span class="nav-item-left">
-                                <i class="bi bi-people"></i>
-                                <span>Users</span>
-                            </span>
-                        </a>
-                    </li>
                 </ul>
 
                 <div class="nav-section-title">Pages</div>
                 <ul class="nav-list">
+                    <!-- Dropdown: Auth -->
                     <li>
-                        <a href="#" class="nav-item-link">
+                        <a href="#" class="nav-item-link nav-dropdown-toggle" aria-expanded="false">
                             <span class="nav-item-left">
                                 <i class="bi bi-shield-lock"></i>
                                 <span>Auth</span>
                             </span>
-                            <i class="bi bi-chevron-right text-muted" style="font-size: 0.75rem;"></i>
+                            <i class="bi bi-chevron-right nav-chevron"></i>
                         </a>
+                        <ul class="nav-submenu">
+                            <li><a href="#" class="nav-subitem-link">Sign In</a></li>
+                            <li><a href="#" class="nav-subitem-link">Register Staff</a></li>
+                            <li><a href="#" class="nav-subitem-link">Reset Password</a></li>
+                        </ul>
                     </li>
+
+                    <!-- Dropdown: Errors -->
                     <li>
-                        <a href="#" class="nav-item-link">
+                        <a href="#" class="nav-item-link nav-dropdown-toggle" aria-expanded="false">
                             <span class="nav-item-left">
                                 <i class="bi bi-exclamation-octagon"></i>
                                 <span>Errors</span>
                             </span>
-                            <i class="bi bi-chevron-right text-muted" style="font-size: 0.75rem;"></i>
+                            <i class="bi bi-chevron-right nav-chevron"></i>
                         </a>
+                        <ul class="nav-submenu">
+                            <li><a href="#" class="nav-subitem-link">404 Not Found</a></li>
+                            <li><a href="#" class="nav-subitem-link">500 Server Error</a></li>
+                            <li><a href="#" class="nav-subitem-link">Maintenance Mode</a></li>
+                        </ul>
                     </li>
-                </ul> -->
+                </ul>
 
                 <div class="nav-section-title">Other</div>
                 <ul class="nav-list">
+                    <!-- Dropdown: Settings -->
                     <li>
-                        <a href="#" class="nav-item-link">
+                        <a href="#" class="nav-item-link nav-dropdown-toggle" aria-expanded="false">
                             <span class="nav-item-left">
                                 <i class="bi bi-gear"></i>
                                 <span>Settings</span>
                             </span>
-                            <i class="bi bi-chevron-right text-muted" style="font-size: 0.75rem;"></i>
+                            <i class="bi bi-chevron-right nav-chevron"></i>
                         </a>
+                        <ul class="nav-submenu">
+                            <li><a href="#" class="nav-subitem-link">General Settings</a></li>
+                            <li><a href="#" class="nav-subitem-link">Store Profile</a></li>
+                            <li><a href="#" class="nav-subitem-link">VAT & Tax Rules</a></li>
+                            <li><a href="#" class="nav-subitem-link">Receipt Branding</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#" class="nav-item-link">
@@ -693,10 +771,10 @@
         <!-- Top Bar Title & Actions -->
         <div class="dashboard-header">
             <h1 class="dashboard-title">Dashboard</h1>
-            <button class="btn-download">
+            <!-- <button class="btn-download">
                 <i class="bi bi-download"></i>
                 Download
-            </button>
+            </button> -->
         </div>
 
         <!-- Tab Controls -->
@@ -936,6 +1014,20 @@
             } else {
                 icon.removeClass('bi-sun').addClass('bi-moon-stars');
             }
+        });
+
+        // Interactive Dropdowns for all nav items with chevron-right
+        $('.nav-dropdown-toggle').on('click', function(e) {
+            e.preventDefault();
+            const btn = $(this);
+            const subMenu = btn.next('.nav-submenu');
+
+            // Slide toggle the target submenu
+            subMenu.stop(true, true).slideToggle(200);
+            btn.toggleClass('open');
+
+            const isOpen = btn.hasClass('open');
+            btn.attr('aria-expanded', isOpen);
         });
     </script>
 </body>
