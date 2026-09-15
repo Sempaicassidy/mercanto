@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-Duka</title>
+    <title>Statistics - e-duka</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Chart.js for smooth Overview bar chart -->
+    <!-- Chart.js for smooth curved line/area chart -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -29,7 +29,6 @@
             --nav-active-bg: #f4f4f5;
             --card-border: #e4e4e7;
             --primary-btn: #09090b;
-            --bar-color: #0f172a;
         }
 
         * {
@@ -175,7 +174,7 @@
             border-radius: 9999px;
         }
 
-        /* Collapsible Submenu Styles (Shadcn Style) */
+        /* Collapsible Submenu Styles */
         .nav-dropdown-toggle {
             cursor: pointer;
             user-select: none;
@@ -216,12 +215,6 @@
 
         .nav-subitem-link:hover {
             color: var(--text-dark);
-            background-color: #f4f4f5;
-        }
-
-        .nav-subitem-link.active {
-            color: var(--text-dark);
-            font-weight: 600;
             background-color: #f4f4f5;
         }
 
@@ -301,7 +294,6 @@
             gap: 12px;
         }
 
-        /* Search Box matching screenshot */
         .header-search-box {
             display: flex;
             align-items: center;
@@ -351,7 +343,6 @@
             white-space: nowrap;
         }
 
-        /* Nav Icon Action Buttons (Theme, Settings) */
         .nav-icon-btn {
             background: transparent;
             border: none;
@@ -372,7 +363,6 @@
             color: #09090b;
         }
 
-        /* Avatar Initials Circle */
         .header-avatar {
             width: 36px;
             height: 36px;
@@ -393,195 +383,153 @@
             background-color: #e2e8f0;
         }
 
-        /* Top Header */
-        .dashboard-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-        }
-
-        .dashboard-title {
-            font-size: 1.95rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--text-dark);
-        }
-
-        .btn-download {
-            background-color: var(--primary-btn);
-            color: #ffffff;
-            border: none;
-            padding: 0.55rem 1.25rem;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-download:hover {
-            background-color: #27272a;
-            color: #ffffff;
-            transform: translateY(-1px);
-        }
-
-        /* Nav Tabs Switcher */
-        .dashboard-tabs {
-            display: inline-flex;
-            background-color: #f4f4f5;
-            padding: 4px;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            gap: 2px;
-        }
-
-        .tab-btn {
-            border: none;
-            background: transparent;
-            padding: 0.4rem 1.1rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-
-        .tab-btn.active {
-            background-color: #ffffff;
-            color: var(--text-dark);
-            font-weight: 600;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Cards Grid */
-        .stat-card {
+        /* Statistics UI Components matching image */
+        .stat-card-custom {
             background-color: #ffffff;
             border: 1px solid var(--card-border);
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 1.5rem 1.75rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: box-shadow 0.2s ease;
             height: 100%;
+            transition: box-shadow 0.2s ease;
         }
 
-        .stat-card:hover {
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+        .stat-card-custom:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
         }
 
-        .stat-header {
+        .stat-card-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1.25rem;
         }
 
-        .stat-label {
-            font-size: 0.85rem;
+        .stat-card-title {
+            font-size: 0.95rem;
             font-weight: 600;
-            color: #52525b;
+            color: #09090b;
         }
 
-        .stat-icon {
-            font-size: 1rem;
+        .stat-card-icon {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+
+        .stat-card-value {
+            font-size: 1.95rem;
+            font-weight: 800;
+            color: #09090b;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-bottom: 0.45rem;
+        }
+
+        .stat-card-trend {
+            font-size: 0.82rem;
+            color: #71717a;
+            font-weight: 500;
+        }
+
+        /* Large Card Container */
+        .chart-card-large {
+            background-color: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1.75rem 2rem 2rem 2rem;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .chart-header-block {
+            margin-bottom: 1.75rem;
+        }
+
+        .chart-main-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #09090b;
+            margin-bottom: 4px;
+        }
+
+        .chart-subtitle {
+            font-size: 0.85rem;
             color: #71717a;
         }
 
-        .stat-value {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            letter-spacing: -0.5px;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-subtext {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
-        /* Large Sections Grid */
-        .content-card {
+        /* Breakdown Cards (Referrers & Devices) */
+        .breakdown-card {
             background-color: #ffffff;
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 1.75rem;
+            border-radius: 14px;
+            padding: 1.75rem 2rem;
             height: 100%;
         }
 
-        .card-header-clean {
-            margin-bottom: 1.5rem;
+        .breakdown-header {
+            margin-bottom: 1.75rem;
         }
 
-        .card-header-clean h3 {
-            font-size: 1.1rem;
+        .breakdown-title {
+            font-size: 1.15rem;
             font-weight: 700;
-            color: var(--text-dark);
-            margin: 0;
+            color: #09090b;
+            margin-bottom: 4px;
         }
 
-        .card-header-clean p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin: 4px 0 0 0;
+        .breakdown-subtitle {
+            font-size: 0.85rem;
+            color: #71717a;
         }
 
-        /* Recent Sales Item */
-        .sale-item {
+        .breakdown-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .breakdown-item-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.85rem 0;
-            border-bottom: 1px solid #f4f4f5;
+            margin-bottom: 6px;
         }
 
-        .sale-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .sale-user {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .sale-avatar {
-            width: 40px;
-            height: 40px;
-            background-color: #f4f4f5;
-            color: #27272a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
+        .breakdown-item-name {
             font-size: 0.88rem;
+            font-weight: 500;
+            color: #3f3f46;
         }
 
-        .sale-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            line-height: 1.2;
-        }
-
-        .sale-email {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        .sale-amount {
-            font-size: 1rem;
+        .breakdown-item-val {
+            font-size: 0.88rem;
             font-weight: 700;
-            color: var(--text-dark);
+            color: #09090b;
+        }
+
+        /* Progress Bars */
+        .custom-progress-track {
+            width: 100%;
+            height: 8px;
+            background-color: #f1f5f9;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .custom-progress-bar-dark {
+            height: 100%;
+            background-color: #111827;
+            border-radius: 9999px;
+            transition: width 0.6s ease;
+        }
+
+        .custom-progress-bar-slate {
+            height: 100%;
+            background-color: #475569;
+            border-radius: 9999px;
+            transition: width 0.6s ease;
         }
     </style>
 </head>
@@ -604,12 +552,12 @@
                 <i class="bi bi-chevron-expand text-muted" style="font-size: 0.9rem;"></i>
             </div>
 
-            <!-- DYNAMIC NAV ITEMS (Shadcn Sidebar with Interactive Dropdowns) -->
+            <!-- DYNAMIC NAV ITEMS -->
             <div id="sidebar-nav-container">
                 <div class="nav-section-title">General</div>
                 <ul class="nav-list">
                     <li>
-                        <a href="{{ url('/manager/dashboard') }}" class="nav-item-link active">
+                        <a href="{{ url('/manager/dashboard') }}" class="nav-item-link">
                             <span class="nav-item-left">
                                 <i class="bi bi-speedometer2"></i>
                                 <span>Dashboard</span>
@@ -617,7 +565,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/manager/statistics') }}" class="nav-item-link">
+                        <!-- Statistics Nav Item (Active) -->
+                        <a href="{{ url('/manager/statistics') }}" class="nav-item-link active">
                             <span class="nav-item-left">
                                 <i class="bi bi-bar-chart-line"></i>
                                 <span>Statistics</span>
@@ -752,186 +701,183 @@
         <!-- Top Utility Header (Search, Theme, Settings, Avatar) -->
         <header class="top-nav-bar">
             <div class="top-nav-actions">
-                <!-- Search Box matching screenshot -->
                 <div class="header-search-box">
                     <i class="bi bi-search search-icon"></i>
                     <input type="text" class="search-input" placeholder="Search" id="global-search-input">
                     <span class="search-kbd">⌘ K</span>
                 </div>
 
-                <!-- Theme Toggle Button (Sun icon) -->
                 <button class="nav-icon-btn" id="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme">
                     <i class="bi bi-sun" id="theme-icon"></i>
                 </button>
 
-                <!-- Settings Button (Gear icon) -->
                 <button class="nav-icon-btn" id="settings-btn" title="Settings" aria-label="Settings">
                     <i class="bi bi-gear"></i>
                 </button>
 
-                <!-- User Profile Initials Avatar (SN) -->
                 <div class="header-avatar" id="user-avatar-btn" title="User Profile (SN)">
                     SN
                 </div>
             </div>
         </header>
 
-        <!-- Top Bar Title & Actions -->
-        <div class="dashboard-header">
-            <h1 class="dashboard-title">Dashboard</h1>
-            <!-- <button class="btn-download">
-                <i class="bi bi-download"></i>
-                Download
-            </button> -->
+        <!-- TOP SECTION: Traffic Overview (Weekly clicks & unique visitors) Area Chart -->
+        <div class="chart-card-large">
+            <div class="chart-header-block">
+                <h2 class="chart-main-title">Traffic Overview</h2>
+                <span class="chart-subtitle">Weekly clicks and unique visitors</span>
+            </div>
+            <div style="height: 380px; position: relative;">
+                <canvas id="trafficOverviewChart"></canvas>
+            </div>
         </div>
 
-        <!-- Tab Controls -->
-        <div class="dashboard-tabs">
-            <button class="tab-btn active">Overview</button>
-            <button class="tab-btn">Analytics</button>
-            
-            <button class="tab-btn">Notifications</button>
-        </div>
-
-        <!-- Stat Cards Row (4 Columns) -->
+        <!-- MIDDLE SECTION: 4 Stat Cards Row -->
         <div class="row g-4 mb-4">
-            <!-- Total Revenue -->
+            <!-- Total Clicks -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-label">Total Revenue</span>
-                        <i class="bi bi-currency-dollar stat-icon"></i>
+                <div class="stat-card-custom">
+                    <div class="stat-card-header">
+                        <span class="stat-card-title">Total Clicks</span>
+                        <i class="bi bi-graph-up stat-card-icon"></i>
                     </div>
                     <div>
-                        <div class="stat-value">$45,231.89</div>
-                        <div class="stat-subtext">+20.1% from last month</div>
+                        <div class="stat-card-value">1,248</div>
+                        <div class="stat-card-trend">+12.4% vs last week</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Subscriptions -->
+            <!-- Unique Visitors -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-label">Subscriptions</span>
-                        <i class="bi bi-people stat-icon"></i>
+                <div class="stat-card-custom">
+                    <div class="stat-card-header">
+                        <span class="stat-card-title">Unique Visitors</span>
+                        <i class="bi bi-person stat-card-icon"></i>
                     </div>
                     <div>
-                        <div class="stat-value">+2350</div>
-                        <div class="stat-subtext">+180.1% from last month</div>
+                        <div class="stat-card-value">832</div>
+                        <div class="stat-card-trend">+5.8% vs last week</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Sales -->
+            <!-- Bounce Rate -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-label">Sales</span>
-                        <i class="bi bi-credit-card stat-icon"></i>
+                <div class="stat-card-custom">
+                    <div class="stat-card-header">
+                        <span class="stat-card-title">Bounce Rate</span>
+                        <i class="bi bi-chevron-down stat-card-icon"></i>
                     </div>
                     <div>
-                        <div class="stat-value">+12,234</div>
-                        <div class="stat-subtext">+19% from last month</div>
+                        <div class="stat-card-value">42%</div>
+                        <div class="stat-card-trend">-3.2% vs last week</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Active Now -->
+            <!-- Avg. Session -->
             <div class="col-12 col-sm-6 col-xl-3">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-label">Active Now</span>
-                        <i class="bi bi-activity stat-icon"></i>
+                <div class="stat-card-custom">
+                    <div class="stat-card-header">
+                        <span class="stat-card-title">Avg. Session</span>
+                        <i class="bi bi-clock stat-card-icon"></i>
                     </div>
                     <div>
-                        <div class="stat-value">+573</div>
-                        <div class="stat-subtext">+201 since last hour</div>
+                        <div class="stat-card-value">3m 24s</div>
+                        <div class="stat-card-trend">+18s vs last week</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Lower Grid: Overview Bar Chart (Left) + Recent Sales (Right) -->
+        <!-- BOTTOM SECTION: Referrers & Devices Row -->
         <div class="row g-4">
-            <!-- Overview Chart Column -->
-            <div class="col-12 col-lg-7 col-xl-7">
-                <div class="content-card">
-                    <div class="card-header-clean">
-                        <h3>Overview</h3>
+            <!-- Referrers Card -->
+            <div class="col-12 col-lg-6">
+                <div class="breakdown-card">
+                    <div class="breakdown-header">
+                        <h3 class="breakdown-title">Referrers</h3>
+                        <span class="breakdown-subtitle">Top sources driving traffic</span>
                     </div>
-                    <div style="height: 350px; position: relative;">
-                        <canvas id="overviewChart"></canvas>
+
+                    <div class="breakdown-list">
+                        <!-- Direct -->
+                        <div>
+                            <div class="breakdown-item-header">
+                                <span class="breakdown-item-name">Direct</span>
+                                <span class="breakdown-item-val">512</span>
+                            </div>
+                            <div class="custom-progress-track">
+                                <div class="custom-progress-bar-dark" style="width: 100%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Product Hunt -->
+                        <div>
+                            <div class="breakdown-item-header">
+                                <span class="breakdown-item-name">Product Hunt</span>
+                                <span class="breakdown-item-val">238</span>
+                            </div>
+                            <div class="custom-progress-track">
+                                <div class="custom-progress-bar-dark" style="width: 46%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Twitter -->
+                        <div>
+                            <div class="breakdown-item-header">
+                                <span class="breakdown-item-name">Twitter</span>
+                                <span class="breakdown-item-val">174</span>
+                            </div>
+                            <div class="custom-progress-track">
+                                <div class="custom-progress-bar-dark" style="width: 34%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Recent Sales Column -->
-            <div class="col-12 col-lg-5 col-xl-5">
-                <div class="content-card">
-                    <div class="card-header-clean">
-                        <h3>Recent Sales</h3>
-                        <p>You made 265 sales this month.</p>
+            <!-- Devices Card -->
+            <div class="col-12 col-lg-6">
+                <div class="breakdown-card">
+                    <div class="breakdown-header">
+                        <h3 class="breakdown-title">Devices</h3>
+                        <span class="breakdown-subtitle">How users access your app</span>
                     </div>
-                    <div class="sales-list">
-                        <!-- Sale Item 1 -->
-                        <div class="sale-item">
-                            <div class="sale-user">
-                                <div class="sale-avatar">OM</div>
-                                <div>
-                                    <div class="sale-name">Olivia Martin</div>
-                                    <div class="sale-email">olivia.martin@email.com</div>
-                                </div>
+
+                    <div class="breakdown-list">
+                        <!-- Desktop -->
+                        <div>
+                            <div class="breakdown-item-header">
+                                <span class="breakdown-item-name">Desktop</span>
+                                <span class="breakdown-item-val">74%</span>
                             </div>
-                            <div class="sale-amount">+$1,999.00</div>
+                            <div class="custom-progress-track">
+                                <div class="custom-progress-bar-slate" style="width: 74%;"></div>
+                            </div>
                         </div>
 
-                        <!-- Sale Item 2 -->
-                        <div class="sale-item">
-                            <div class="sale-user">
-                                <div class="sale-avatar">JL</div>
-                                <div>
-                                    <div class="sale-name">Jackson Lee</div>
-                                    <div class="sale-email">jackson.lee@email.com</div>
-                                </div>
+                        <!-- Mobile -->
+                        <div>
+                            <div class="breakdown-item-header">
+                                <span class="breakdown-item-name">Mobile</span>
+                                <span class="breakdown-item-val">22%</span>
                             </div>
-                            <div class="sale-amount">+$39.00</div>
+                            <div class="custom-progress-track">
+                                <div class="custom-progress-bar-slate" style="width: 22%;"></div>
+                            </div>
                         </div>
 
-                        <!-- Sale Item 3 -->
-                        <div class="sale-item">
-                            <div class="sale-user">
-                                <div class="sale-avatar">IN</div>
-                                <div>
-                                    <div class="sale-name">Isabella Nguyen</div>
-                                    <div class="sale-email">isabella.nguyen@email.com</div>
-                                </div>
+                        <!-- Tablet -->
+                        <div>
+                            <div class="breakdown-item-header">
+                                <span class="breakdown-item-name">Tablet</span>
+                                <span class="breakdown-item-val">4%</span>
                             </div>
-                            <div class="sale-amount">+$299.00</div>
-                        </div>
-
-                        <!-- Sale Item 4 -->
-                        <div class="sale-item">
-                            <div class="sale-user">
-                                <div class="sale-avatar">WK</div>
-                                <div>
-                                    <div class="sale-name">William Kim</div>
-                                    <div class="sale-email">will@email.com</div>
-                                </div>
+                            <div class="custom-progress-track">
+                                <div class="custom-progress-bar-slate" style="width: 4%;"></div>
                             </div>
-                            <div class="sale-amount">+$99.00</div>
-                        </div>
-
-                        <!-- Sale Item 5 -->
-                        <div class="sale-item">
-                            <div class="sale-user">
-                                <div class="sale-avatar">SD</div>
-                                <div>
-                                    <div class="sale-name">Sofia Davis</div>
-                                    <div class="sale-email">sofia.davis@email.com</div>
-                                </div>
-                            </div>
-                            <div class="sale-amount">+$39.00</div>
                         </div>
                     </div>
                 </div>
@@ -939,23 +885,53 @@
         </div>
     </main>
 
-    <!-- Chart Configuration Script -->
+    <!-- Interactive Scripts & Chart.js Implementation -->
     <script>
-        const ctx = document.getElementById('overviewChart').getContext('2d');
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const values = [1600, 3400, 2900, 4100, 4600, 5200, 1650, 1500, 5600, 5300, 3500, 4700];
+        // Render Traffic Overview Chart matching screenshot exactly
+        const ctx = document.getElementById('trafficOverviewChart').getContext('2d');
+        const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+        // Line 1 (Dark line with filled shadow): High on Mon, Tue, drops on Wed, rises on Fri, drops on Sun
+        const dataClicks = [870, 990, 240, 480, 700, 480, 160];
+        
+        // Line 2 (Lighter thin curve): Starts ~730, slopes down to Thu ~160, rises to Sun ~760
+        const dataVisitors = [730, 600, 280, 160, 650, 410, 760];
+
+        // Gradient for filled area
+        const fillGradient = ctx.createLinearGradient(0, 0, 0, 380);
+        fillGradient.addColorStop(0, 'rgba(203, 213, 225, 0.6)');
+        fillGradient.addColorStop(1, 'rgba(241, 245, 249, 0.05)');
 
         new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
-                labels: months,
-                datasets: [{
-                    data: values,
-                    backgroundColor: '#0f172a',
-                    borderRadius: 4,
-                    borderSkipped: false,
-                    barPercentage: 0.65,
-                }]
+                labels: days,
+                datasets: [
+                    {
+                        label: 'Weekly Clicks',
+                        data: dataClicks,
+                        borderColor: '#1e293b',
+                        borderWidth: 2,
+                        backgroundColor: fillGradient,
+                        fill: true,
+                        tension: 0.45, // smooth spline curve
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointHoverBackgroundColor: '#1e293b',
+                    },
+                    {
+                        label: 'Unique Visitors',
+                        data: dataVisitors,
+                        borderColor: '#64748b',
+                        borderWidth: 1.5,
+                        backgroundColor: 'transparent',
+                        fill: false,
+                        tension: 0.45, // smooth spline curve
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#64748b',
+                    }
+                ]
             },
             options: {
                 responsive: true,
@@ -967,41 +943,37 @@
                         padding: 10,
                         titleFont: { size: 12 },
                         bodyFont: { size: 12 },
-                        callbacks: {
-                            label: function(context) {
-                                return ' $' + context.raw.toLocaleString();
-                            }
-                        }
+                        cornerRadius: 6,
                     }
                 },
                 scales: {
                     x: {
                         grid: { display: false },
                         border: { display: false },
-                        ticks: { color: '#71717a', font: { size: 12 } }
+                        ticks: {
+                            color: '#64748b',
+                            font: { size: 12.5, family: 'Inter' }
+                        }
                     },
                     y: {
                         border: { display: false },
-                        grid: { color: '#f4f4f5' },
+                        grid: { 
+                            color: '#f1f5f9',
+                            drawBorder: false,
+                        },
                         ticks: {
-                            color: '#71717a',
-                            font: { size: 12 },
-                            stepSize: 1500,
-                            callback: function(val) {
-                                return '$' + val;
+                            color: '#64748b',
+                            font: { size: 12, family: 'Inter' },
+                            stepSize: 250,
+                            callback: function(value) {
+                                return value;
                             }
                         },
                         min: 0,
-                        max: 6000
+                        max: 1000
                     }
                 }
             }
-        });
-
-        // Tab click interactive switcher
-        $('.tab-btn').on('click', function() {
-            $('.tab-btn').removeClass('active');
-            $(this).addClass('active');
         });
 
         // Cmd+K or Ctrl+K shortcut to focus search bar

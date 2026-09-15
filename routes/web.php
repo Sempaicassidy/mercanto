@@ -17,3 +17,11 @@ Route::get('/manager', function () {
 Route::get('/manager/dashboard', function () {
     return view('manager.dashboard');
 });
+
+Route::get('/manager/statistics', function () {
+    return view('manager.statistics');
+});
+
+Route::get('/statistics', function () {
+    return view('manager.statistics');
+});
