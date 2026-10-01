@@ -1,0 +1,130 @@
+{
+  "name": "Mercanto POS & ERP Management System",
+  "short_name": "Mercanto",
+  "id": "/?source=pwa",
+  "description": "Mfumo wa Kisasa wa Mauzo (POS), Stoo na Usimamizi wa Maduka ya Jumla na Rejareja",
+  "start_url": "/login",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#09090b",
+  "theme_color": "#10b981",
+  "lang": "sw",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Mercanto POS & Management Dashboard"
+    },
+    {
+      "src": "/icons/screenshot-mobile.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mercanto Mobile POS Interface"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "POS Mauzo (Cashier)",
+      "short_name": "POS",
+      "description": "Fungua kaunta ya mauzo ya haraka",
+      "url": "/pos",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Dashibodi ya Meneja",
+      "short_name": "Meneja",
+      "description": "Tazama ripoti, takwimu na udhibiti wa duka",
+      "url": "/manager/dashboard",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Usimamizi wa Stoo",
+      "short_name": "Stoo",
+      "description": "Kagua bidhaa na stoo ya duka",
+      "url": "/storekeeper/dashboard",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Usimamizi Mkuu",
+      "short_name": "Super Admin",
+      "description": "Usimamizi wa matawi na maduka",
+      "url": "/super-admin/dashboard",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    "business",
+    "finance",
+    "shopping",
+    "productivity"
+  ],
+  "prefer_related_applications": false
+}
