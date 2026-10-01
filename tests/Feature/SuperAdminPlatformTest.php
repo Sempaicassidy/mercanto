@@ -264,4 +264,35 @@ class SuperAdminPlatformTest extends TestCase
         $this->assertNotNull($ticket->resolved_at);
         $this->assertStringContainsString('Updated printer driver', $ticket->resolution_notes);
     }
+
+    public function test_super_admin_can_update_support_ticket_to_in_progress_without_resolution_notes(): void
+    {
+        $superAdmin = User::where('role', 'super_admin')->first();
+        $this->actingAs($superAdmin);
+
+        $tenant = Tenant::first();
+
+        $ticket = SupportTicket::create([
+            'tenant_id' => $tenant->id,
+            'ticket_number' => 'TCK-TEST-001',
+            'subject' => 'VAT Configuration inquiry',
+            'category' => 'billing',
+            'priority' => 'urgent',
+            'status' => 'open',
+            'description' => 'Need help with TRA VAT settings',
+        ]);
+
+        // Submit status update with only 'status' field (as sent by 'Shughulikia' button)
+        $response = $this->post("/super-admin/support/{$ticket->id}/status", [
+            'status' => 'in_progress',
+        ]);
+
+        $response->assertRedirect();
+        $response->assertSessionHas('success');
+
+        $ticket->refresh();
+        $this->assertEquals('in_progress', $ticket->status);
+        $this->assertNull($ticket->resolution_notes);
+        $this->assertNull($ticket->resolved_at);
+    }
 }

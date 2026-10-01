@@ -484,8 +484,11 @@ class SuperAdminController extends Controller
 
         $updates = [
             'status' => $validated['status'],
-            'resolution_notes' => $validated['resolution_notes'],
         ];
+
+        if (array_key_exists('resolution_notes', $validated)) {
+            $updates['resolution_notes'] = $validated['resolution_notes'];
+        }
 
         if ($validated['status'] === 'resolved' && ! $ticket->resolved_at) {
             $updates['resolved_at'] = now();
